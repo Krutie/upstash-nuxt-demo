@@ -1,0 +1,31 @@
+name = "upstash-demo"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2021-11-20"
+
+# Define top-level environment variables
+# under the `[vars]` block using
+# the `key = "value"` format
+[vars]
+UPSTASH_REDIS_REST_URL = ""
+UPSTASH_REDIS_REST_TOKEN = ""
+UPSTASH_REDIS_CONN = ""
+
+# Override values for `--env production` usage
+[env.production]
+name = "nitro-cf-playground-worker-production"
+[env.production.vars]
+UPSTASH_REDIS_REST_URL = ""
+UPSTASH_REDIS_REST_TOKEN = ""
+UPSTASH_REDIS_CONN = ""
+
+[site]
+bucket = ".output/public"
+entry-point = ".output"
+
+[build]
+command = "NITRO_PRESET=cloudflare yarn nuxt build"
+upload.format = "service-worker"
