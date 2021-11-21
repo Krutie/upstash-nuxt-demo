@@ -2,8 +2,8 @@ import type { IncomingMessage, ServerResponse } from 'http'
 import { useQuery } from 'h3'
 import { getRedisKey } from '../utils';
 
-import { myZscore } from '../upstash';
-// import { myZscore } from '../redis';
+import { getPageCount } from '../upstash'; // uses @upstash/redis
+// import { getPageCount } from '../redis'; // uses ioredis
 
 import { auth } from '@upstash/redis';
 import config from '#config';
@@ -16,7 +16,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
    
    const redisKey = getRedisKey(query.path);
    
-   const count = await myZscore(redisKey);
+   const count = await getPageCount(redisKey);
    
    return { count }
 }
