@@ -16,7 +16,7 @@ UPSTASH_REDIS_CONN = ""
 
 # Override values for `--env production` usage
 [env.production]
-name = "nitro-cf-playground-worker-production"
+name = "upstash-demo-worker-production"
 [env.production.vars]
 UPSTASH_REDIS_REST_URL = ""
 UPSTASH_REDIS_REST_TOKEN = ""
